@@ -1,0 +1,28 @@
+<%= link_to 'New Topic', new_topic_path, :class => "btn btn-default" %>
+
+<table class='table table-hover'>
+  <tr>
+    <th>Topic</th>
+    <th>Group</th> 
+    <th>User</th>
+    <th>Time</th>
+    <th>Operation</th>
+  </tr>
+  <% @topics.each do |t| %>
+    <tr>
+      <td><%= link_to t.title, topic_path(t)%></td>
+      <td><%= link_to 'group', topic_path(t)%></td>
+      <td><%= link_to 'user', topic_path(t)%></td>
+      <td><%= t.updated_at %></td>
+      <td>
+        <%= link_to 'EDIT', edit_topic_path(t), :class => 'btn btn-warning' %> 
+        <%= link_to 'DELETE', topic_path(t), :method => 'destroy', :class => 'btn btn-danger' %> 
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+
+
+

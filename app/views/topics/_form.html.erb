@@ -1,0 +1,20 @@
+
+<table class='table table-bordered'>
+  <tr><th colspan='2'><h3>New Article</h3></th></tr>
+  <tr>
+    <td class='col-md-3 text-right'>
+      <%= t.label :title, 'Title' %>
+    </td>
+    <td>
+      <%= t.text_field :title %>
+    </td>
+  </tr>
+  <tr>
+    <td class='col-md-3 text-right'>
+      <%= t.label :content, 'Content' %>
+    </td>
+    <td>
+      <%= t.text_area :content, :class => 'col-lg-4 col-md-4 col-sm-5' %>
+    </td>
+  </tr>
+</table>
