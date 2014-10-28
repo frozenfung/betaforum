@@ -1,7 +1,7 @@
 <%= form_for @topic, :url => topics_path do |t|%>
-  <%= render :partial => 'form', :locals => {:t => t, :act => 'New'} %>
+  <%= render :partial => 'form', :locals => {:t => t, :act => 'Edit'} %>
   <div class='text-center'>
   <%= link_to 'Back', topics_path, :class => 'btn btn-default' %>
-  <%= t.submit 'Create', :class => 'btn btn-default' %>
+  <%= t.submit 'Update', :class => 'btn btn-warning' %>
   </div>
 <% end %>

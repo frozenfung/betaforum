@@ -16,11 +16,12 @@
       <td><%= t.updated_at %></td>
       <td>
         <%= link_to 'EDIT', edit_topic_path(t), :class => 'btn btn-warning' %> 
-        <%= link_to 'DELETE', topic_path(t), :method => 'destroy', :class => 'btn btn-danger' %> 
+        <%= link_to 'DELETE', topic_path(t), :method => 'delete', :class => 'btn btn-danger' %> 
       </td>
     </tr>
   <% end %>
 </table>
+<div class="text-center" colspan="5"><%= paginate @topics %></div>
 
 
 
