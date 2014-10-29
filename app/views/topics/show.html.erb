@@ -1,25 +1,32 @@
-<h3><%= @topic.title %></h3>
+<h2><%= @topic.title %></h2>
 <br>
 <br>
-<p class="lead"><%= @topic.content %></p>
-<div class='text-center'>
+
+<div class='tc'>
+  <%= @topic.content %>
+</div>
+<br>
+<br>
+<br>
+<h2 class="text-left">Reply</h2>
 <table class='table table-bordered'>
-
-
-
+  <% @topic.replies.each do |r| %>
+    <tr>
+      <td class='text-right'><%= r.user.email %>表示</td>
+      <td class='text-left'><div class='ta'><%= r.content %></div></td>
+    </tr>
+  <% end %>
   <%= form_for Reply.new, :url => topic_replies_path(@topic) do |r| %>
-  <tr>
+  <tr class='active'>
     <td class='col-md-3 text-right'><%= r.label :content, 'Comment'%></td>
     <td><%= r.text_area :content, :class => 'ta' %></td>
-  </tr> 
-  <tr>
-    <td colspan="2"><%= r.submit 'Submit', :class => 'btn btn-default' %></td>
   </tr>
-  <%end%>
-
-
 </table>
-
-
-<%= link_to 'Back', topics_path, :class => "btn btn-default" %>
-</div>
+  <div class='text-center'>
+    <%= r.submit 'Submit', :class => 'btn btn-default' %>
+    <%= link_to 'Back', topics_path, :class => "btn btn-default" %>
+  </div>
+  <%end%>
+<br>
+<br>
+<br>

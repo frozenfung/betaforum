@@ -24,12 +24,16 @@ class TopicsController < ApplicationController
   end
 
   def show
-
+    @replies = Reply.includes(:user).page(params[:page]).per(10)
   end
 
   def update
-    @topic.save
-    redirect_to topic_path
+    @topic.update(topic_params)
+    if @topic.save
+      redirect_to topic_path
+    else
+      render :action => :edit
+    end
   end
 
   def destroy
