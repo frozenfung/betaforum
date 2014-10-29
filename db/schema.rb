@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028030953) do
+ActiveRecord::Schema.define(version: 20141029021308) do
 
   create_table "groups", force: true do |t|
     t.datetime "created_at"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20141028030953) do
   create_table "replies", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "topic_id"
+    t.string   "content"
   end
 
   create_table "topic_groupships", force: true do |t|
@@ -35,6 +37,7 @@ ActiveRecord::Schema.define(version: 20141028030953) do
     t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|

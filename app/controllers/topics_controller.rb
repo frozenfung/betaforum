@@ -1,9 +1,11 @@
 class TopicsController < ApplicationController
 
   before_action :set_topic, :only => [:edit, :destroy, :update, :show]
+  before_action :authenticate_user!
+
 
   def index
-    @topics = Topic.page(params[:page]).per(7)
+    @topics = Topic.includes(:user).page(params[:page]).per(7)
   end
 
   def new
@@ -12,6 +14,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(topic_params)
+    @topic.user = current_user
     @topic.save
 
     redirect_to topics_path

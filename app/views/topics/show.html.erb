@@ -3,7 +3,22 @@
 <br>
 <p class="lead"><%= @topic.content %></p>
 <div class='text-center'>
+<table class='table table-bordered'>
 
+
+
+  <%= form_for Reply.new, :url => topic_replies_path(@topic) do |r| %>
+  <tr>
+    <td class='col-md-3 text-right'><%= r.label :content, 'Comment'%></td>
+    <td><%= r.text_area :content, :class => 'ta' %></td>
+  </tr> 
+  <tr>
+    <td colspan="2"><%= r.submit 'Submit', :class => 'btn btn-default' %></td>
+  </tr>
+  <%end%>
+
+
+</table>
 
 
 <%= link_to 'Back', topics_path, :class => "btn btn-default" %>
