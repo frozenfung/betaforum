@@ -5,7 +5,12 @@ class TopicsController < ApplicationController
 
 
   def index
-    @topics = Topic.includes(:user).page(params[:page]).per(7)
+    if params[:order]
+      sort = (params[:order] == 'most') ? 'reply_count DESC' : 'updated_at DESC'
+      @topics = Topic.includes(:user).order(sort).page(params[:page]).per(7)
+    else
+      @topics = Topic.includes(:user).page(params[:page]).per(7)
+    end
   end
 
   def new
