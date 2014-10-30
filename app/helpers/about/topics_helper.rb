@@ -1,0 +1,2 @@
+module About::TopicsHelper
+end

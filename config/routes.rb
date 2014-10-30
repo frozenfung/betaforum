@@ -3,6 +3,14 @@ Rails.application.routes.draw do
   resources :topics do
     resources :replies
   end
+
+  namespace :about do
+    resources :topics
+  end
+
+  namespace :profile do
+    resources :topics
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
