@@ -3,7 +3,6 @@ class TopicsController < ApplicationController
   before_action :set_topic, :only => [:edit, :destroy, :update, :show]
   before_action :authenticate_user!
 
-
   def index
     # apply condition group
     if params[:gid]
@@ -23,7 +22,7 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.new()
+    @topic = Topic.new
   end
 
   def create
@@ -42,8 +41,7 @@ class TopicsController < ApplicationController
   end
 
   def update
-    @topic.update(topic_params)
-    if @topic.save
+    if @topic.update(topic_params)
       redirect_to topic_path
     else
       render :action => :edit
@@ -52,9 +50,12 @@ class TopicsController < ApplicationController
 
   def destroy
     @topic.destroy
+
     redirect_to topics_path
   end
 
+  protected
+  
   def set_topic
     @topic = Topic.find(params[:id])
   end
