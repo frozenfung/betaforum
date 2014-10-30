@@ -1,6 +1,7 @@
 
+<h3><%= act %> Article</h3>
+<br><br>
 <table class='table table-bordered'>
-  <tr><th colspan='2'><h3><%= act %> Article</h3></th></tr>
   <tr>
     <td class='col-md-3 text-right'>
       <%= t.label :title, 'Title' %>
@@ -15,6 +16,15 @@
     </td>
     <td>
       <%= t.text_area :content, :class => 'ta' %>
+    </td>
+  </tr>
+  <tr>
+    <td class='col-md-3 text-right'>
+      <%= t.label :catagory, 'Category' %>
+    </td>
+    <td>
+     <%= t.collection_check_boxes(:group_ids, Group.all,:id,:catagory) %>
+      
     </td>
   </tr>
 </table>

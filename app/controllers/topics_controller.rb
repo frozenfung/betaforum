@@ -5,11 +5,20 @@ class TopicsController < ApplicationController
 
 
   def index
+    # apply condition group
+    if params[:gid]
+      @group = Group.find(params[:gid])
+      @topics = @group.topics
+    else
+      @topics = Topic.all # lazy query
+    end
+
+    # apply condition order
     if params[:order]
       sort = (params[:order] == 'most') ? 'reply_count DESC' : 'updated_at DESC'
-      @topics = Topic.includes(:user).order(sort).page(params[:page]).per(7)
+      @topics = @topics.includes(:user).order(sort).page(params[:page]).per(7)
     else
-      @topics = Topic.includes(:user).page(params[:page]).per(7)
+      @topics = @topics.includes(:user).page(params[:page]).per(7)
     end
   end
 
@@ -51,7 +60,7 @@ class TopicsController < ApplicationController
   end
 
   def topic_params
-    params.require(:topic).permit(:title, :content)
+    params.require(:topic).permit(:title, :content, :group_ids => [])
   end
 
 end

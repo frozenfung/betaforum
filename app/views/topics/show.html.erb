@@ -1,4 +1,6 @@
-<h2><%= @topic.title %></h2>
+<h2>
+<%= @topic.title %>
+</h2>
 <br>
 <br>
 
@@ -6,6 +8,13 @@
   <%= @topic.content %>
 </div>
 <br>
+<h4>
+Category:
+    <% @topic.groups.each do |g| %>
+      <%= g.catagory %> 
+    <% end %>
+</h4>
+
 <br>
 <br>
 <h2 class="text-left">Comment</h2>

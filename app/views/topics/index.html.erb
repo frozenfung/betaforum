@@ -1,8 +1,8 @@
 <%= link_to 'New Topic', new_topic_path, :class => "btn btn-default" %>
 <div class='text-right'>
   Sort By
-  <%= link_to 'Most Replies', topics_path(:order => 'most') %> |
-  <%= link_to 'Newest Reply', topics_path(:order => 'newest')%>
+  <%= link_to 'Most Replies', topics_path( topics_filter_conditions(params, :order => 'most') ) %> |
+  <%= link_to 'Newest Reply', topics_path( topics_filter_conditions(params, :order => 'newest') )%>
 </div>
 <table class='table table-hover'>
   <tr class='info'>
@@ -17,7 +17,11 @@
     <tr>
       <td><%= link_to t.title, topic_path(t)%></td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= t.replies.count%></td>
-      <td><%= link_to 'group', topic_path(t)%></td>
+      <td>
+        <% t.groups.each do |g|%>
+          <%= link_to g.catagory, topics_path( topics_filter_conditions(params, :gid => g.id) )%>
+        <%end%>
+      </td>
       <td><%= link_to t.user.try(:email), topic_path(t)%></td>
       <td>
         <%= link_to '>>', topic_path(t), :class => 'btn btn-primary' %>
