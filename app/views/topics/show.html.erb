@@ -35,7 +35,10 @@ Category:
     </tr>
   <% end %>  
   <tr class='active'>
-    <td class='col-md-3 text-right'><%= r.label :content, 'Comment'%></td>
+    <td class='col-md-3 text-right'>
+      <%= r.label :content, 'Comment'%>
+      <div style='color: red'><%= flash[:no_comment] %></div>
+    </td>
     <td><%= r.text_area :content, :class => 'ta' %></td>
   </tr>
 </table>

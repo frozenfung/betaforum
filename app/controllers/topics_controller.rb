@@ -28,9 +28,12 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     @topic.user = current_user
-    @topic.save
-
-    redirect_to topics_path
+    if @topic.save
+      redirect_to topics_path
+    else
+      flash[:notice] = 'Title and Content can not be blank!'
+      render :action => :new
+    end
   end
 
   def edit
@@ -44,6 +47,7 @@ class TopicsController < ApplicationController
     if @topic.update(topic_params)
       redirect_to topic_path
     else
+      flash[:notice] = 'Title and Content can not be blank!'
       render :action => :edit
     end
   end

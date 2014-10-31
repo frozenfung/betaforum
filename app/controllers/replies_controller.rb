@@ -9,9 +9,12 @@ class RepliesController < ApplicationController
 
     @reply = @topic.replies.build(reply_params)
     @reply.user = current_user
-    @reply.save
-
-    redirect_to topic_path(@topic)
+    if @reply.save
+      redirect_to topic_path(@topic)
+    else
+      flash[:no_comment] = 'You can not comment without comment!'
+      redirect_to topic_path(@topic)
+    end
   end
 
   protected

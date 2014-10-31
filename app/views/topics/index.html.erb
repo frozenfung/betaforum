@@ -1,6 +1,8 @@
 <h2>Forum</h2>
+<hr>
 <%= link_to 'New Topic', new_topic_path, :class => "btn btn-default" %>
-<div class='text-right'>
+
+<div class='text-right' style='float: right; margin-top: 20px'>
   Sort By
   <%= link_to 'Most Replies', topics_path( topics_filter_conditions(params, :order => 'most') ) %> |
   <%= link_to 'Newest Reply', topics_path( topics_filter_conditions(params, :order => 'newest') )%>
