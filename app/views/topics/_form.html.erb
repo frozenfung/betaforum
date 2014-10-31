@@ -1,7 +1,12 @@
 
 <h3><%= act %> Article
-  &nbsp;&nbsp;&nbsp;<small style='color:red'><%= flash[:notice]%></small>
+  &nbsp;&nbsp;&nbsp;<small style='color:red'><%= flash[:blank_field]%></small>
 </h3>
+
+<% if @topic.errors.any? %>
+  <%= @topic.errors.full_messages.join(", ") %>
+<% end %>
+
 <br><br>
 <table class='table table-bordered'>
   <tr>
