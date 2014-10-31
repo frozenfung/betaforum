@@ -1,6 +1,8 @@
 class TopicsController < ApplicationController
 
-  before_action :set_topic, :only => [:edit, :destroy, :update, :show]
+  before_action :set_topic, :only => [:show]
+  before_action :set_my_topic, :only => [:edit, :destroy, :update]
+
   before_action :authenticate_user!
 
   def index
@@ -31,7 +33,7 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to topics_path
     else
-      flash[:notice] = 'Title and Content can not be blank!'
+      flash[:blank_field] = 'Title and Content can not be blank!'
       render :action => :new
     end
   end
@@ -47,7 +49,7 @@ class TopicsController < ApplicationController
     if @topic.update(topic_params)
       redirect_to topic_path
     else
-      flash[:notice] = 'Title and Content can not be blank!'
+      flash[:blank_field] = 'Title and Content can not be blank!'
       render :action => :edit
     end
   end
@@ -62,6 +64,10 @@ class TopicsController < ApplicationController
   
   def set_topic
     @topic = Topic.find(params[:id])
+  end
+
+  def set_my_topic
+    @topic = current_user.topics.find(params[:id])
   end
 
   def topic_params
