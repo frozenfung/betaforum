@@ -107,29 +107,20 @@ nav>ul>li>a:hover{
   color: black;
 }
 
-.selectlifive{
-  z-index: 5;
-
-}
-
-.selectlifour{
-  z-index: 4;
-  background-color: #eee;
-  color: black;
-}
-
-.selectlithree{
-  z-index: 3;
-  background-color: #eee;
-  color: black;
-}
-
 .selecta{
   border-bottom: 2px solid white;
   background-color: white;
   color: black;
 }
 
+.lif{
+  z-index: 5;
+}
+
+
+.lib{
+  z-index: 3;
+}
 
 
 

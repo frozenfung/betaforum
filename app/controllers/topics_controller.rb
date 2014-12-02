@@ -49,7 +49,6 @@ class TopicsController < ApplicationController
     if @topic.update(topic_params)
       redirect_to topic_path
     else
-      flash[:blank_field] = 'Title and Content can not be blank!'
       render :action => :edit
     end
   end

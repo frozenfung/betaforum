@@ -12,8 +12,10 @@ class RepliesController < ApplicationController
     if @reply.save
       redirect_to topic_path(@topic)
     else
-      flash[:no_comment] = 'You can not comment without comment!'
-      redirect_to topic_path(@topic)
+      #flash[:no_comment] = 'You can not comment without comment!'
+      #redirect_to topic_path(@topic)
+
+      render "/topics/show"
     end
   end
 

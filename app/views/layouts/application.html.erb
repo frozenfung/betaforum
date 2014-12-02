@@ -22,10 +22,12 @@
     </div>
     <h1><%= link_to 'BetaForum', topics_path %></h1>
     <nav>
-      <ul>
-        <li><%= current_link_to "Forum", topics_path %></li>
-        <li><%= current_link_to 'About', about_path %></li>
-        <li><%= current_link_to 'Profile', user_path(current_user) %></li>
+    <ul>
+        <li class=<%= current_posi(topics_path) %>><%= current_link_to "Forum", topics_path %></li>
+        <li class=<%= current_posi(about_path) %>><%= current_link_to 'About', about_path %></li>
+        <% if current_user %>
+        <li class=<%= current_posi(user_path(current_user)) %>><%=current_link_to 'Profile', user_path(current_user) %></li>
+        <% end %>
       </ul>
     </nav>
   </div>

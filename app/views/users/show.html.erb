@@ -1,0 +1,39 @@
+<h2>User Profile</h2>
+<hr>
+<table>
+  <tr>
+    <td class='col-md-3 text-right'>Email</td>
+    <td><%=@user.email%></td>
+  </tr>
+  <tr>
+    <td class='col-md-3 text-right'>Account init</td>
+    <td><%=@user.remember_created_at%></td>
+  </tr>
+  <tr>
+    <td class='col-md-3 text-right'>Sign in times</td>
+    <td><%=@user.sign_in_count%></td>
+  </tr>
+  <tr>
+    <td class='col-md-3 text-right'>Last sign in</td>
+    <td><%=@user.last_sign_in_at%></td>
+  </tr>
+  <tr>
+    <td class='col-md-3 text-right'>Last sign in ip</td>
+    <td><%=@user.last_sign_in_ip%></td>
+  </tr>
+  <tr>
+    <td class='col-md-3 text-right'>Total topics</td>
+    <td><%=@topics.count%></td>
+  </tr>
+  <tr>
+    <td class='col-md-3 text-right'>Total replies</td>
+    <td><%=@replies.count%></td>
+  </tr>
+  <tr>
+    <td class='col-md-3 text-right'></td>
+    <td></td>
+  </tr>
+</table>
+<br>
+<br><br>
+<%= link_to 'Back', topics_path, :class => 'btn btn-default'%>

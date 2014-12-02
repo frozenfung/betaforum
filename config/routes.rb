@@ -1,21 +1,19 @@
-Rails.application.routes.draw do
-  devise_for :users
+  Rails.application.routes.draw do
+  devise_for :users 
+
   resources :topics do
     resources :replies
   end
 
-  namespace :about do
-    resources :topics
-  end
+  resources :users
 
-  namespace :profile do
-    resources :topics
-  end
+  get "/about" => "welcome#about"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'topics#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
